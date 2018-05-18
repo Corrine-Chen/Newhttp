@@ -127,8 +127,10 @@ bool SqlConnector::select_data(const std::string& name,
     		int fields = mysql_num_fields(res);
     		MYSQL_FIELD *fd = NULL;
     		// get the name of the field
-                cout<<"<table border>";
-                cout<<"<caption><H3>"<<"Users Table"<<"</H3></caption>";
+                cout<<"<table  border=1 align=center>";
+                cout<<"<title>Users Table</title>";
+                cout<<"<caption><H2>"<<"Users Table"<<"</H2></caption>";
+                
                 cout<<"<tr>";    
 		for(; fd = mysql_fetch_field(res); )
     		{

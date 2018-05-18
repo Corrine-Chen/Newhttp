@@ -1,21 +1,88 @@
-<html>
-<body background="background.jpg">
-<h1>Please register : </h1></head>
-<form action="cgi-bin/insert_cgi", method="POST">
-	<br>	name:  <input type="text" name="name "/><br/>
-	<br>	sex:   <input type="text" name="sex" align="center" valign="middle" bgcolor="#FFFFFF" /><br/>
-	<br>	hobby:<input type="text" name="hobby"/><br/>
-	<br>	school: <input type="text" name="school "/><br/>
-	<br>	<input type="submit" value="insert"/><br/>
-</form>
-
-<head><h1>show user</h1></head>
-<form action="cgi-bin/select_cgi", method="POST">
-	<br>	name:  <input type="text" name="name "/><br/>
-	<br>	sex:   <input type="text" name="sex" align="center" valign="middle" bgcolor="#FFFFFF" /><br/>
-	<br>	hobby:<input type="text" name="hobby"/><br/>
-	<br>	school: <input type="text" name="school "/><br/>
-	<br>	<input type="submit" value="query the user"/><br/>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <title>登记与查询</title>
+    <style>
+       body{
+          padding-top: 50px;//这里加上padding是因为header是绝对定位的
+       }
+       header{
+          top:0;
+          height:75px;
+          position:fixed;
+          text-align:center;
+          background:grey;
+          width:100%;
+          line-height:50px;
+          color:black;
+       }
+       nav{
+           display:inline-block;
+           margin:0 50px;
+       }
+       article{
+           height:500px;
+           width:100%;
+           border:1px solid black;
+       }
+     ;
+    </style>
+</head>
+<body>
+    <header id="top">
+        <nav onclick= "scrolling('#content1')">首页</nav>
+        <nav onclick= "scrolling('#content2')">登记</nav>
+        <nav onclick= "scrolling('#content3')">查询</nav>
+    </header>
+    <container>
+         <article class="content1" id="content1">
+            <h2>首页<h2>
+         </article>
+         <article class="content2" id="content2">
+            <html>
+            <body>
+                 <h1>Please register : </h1></head>
+                 <form action="cgi-bin/insert_cgi", method="POST">
+                	<br>	name:  <input type="text" name="name "/><br/>
+                	<br>	sex:   <input type="text" name="sex" align="center" valign="middle" bgcolor="#FFFFFF" /><br/>
+                	<br>	hobby:<input type="text" name="hobby"/><br/>
+                	<br>	school: <input type="text" name="school "/><br/>
+                	<br>	<input type="submit" value="insert"/><br/>
+            </form>
+            </body>
+            </html>
+          </article>
+          <article class="content3" id="content3">
+             <html>
+             <body>
+                 <head><h1>show user</h1></head>
+                 <form action="cgi-bin/select_cgi", method="POST">
+                	<br>	name:  <input type="text" name="name "/><br/>
+                	<br>	sex:   <input type="text" name="sex" align="center" valign="middle" bgcolor="#FFFFFF" /><br/>
+                	<br>	hobby:<input type="text" name="hobby"/><br/>
+                	<br>	school: <input type="text" name="school "/><br/>
+                	<br>	<input type="submit" value="query the user"/><br/>
+                 </form>
+             </body>
+             </html>
+         </article>
+      </container>
 </body>
+<script type="text/javascript">
+        var topH=$("#top").height();//设置顶部导航高度
+        console.log(topH)
+        function scrolling(select){
+        $("html,body").animate({
+            scrollTop:$(select).offset().top-topH//定义位置
+         },{
+            duration:500,//定义时间
+            easing:"swing"//指定使用何种动画效果，默认是“swing”，还可以设置为“linear”或者自定义动画的函数名称。
+         });
+         return false;
+        }
+</script>
 </html>

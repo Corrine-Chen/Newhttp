@@ -133,7 +133,6 @@ int main()
 	{
 		cerr << "get_data_error" << endl;
         }
-cout<<"<background='/flowers.jpg'>"<<"*********";
 
         select_some_data(buf);
 	return 0;
