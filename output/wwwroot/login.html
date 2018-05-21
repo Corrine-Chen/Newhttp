@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  <link rel ="stylesheet" type="text/css"/>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -34,18 +35,57 @@
 </head>
 <body>
     <header id="top">
-        <nav onclick= "scrolling('#content1')">首页</nav>
-        <nav onclick= "scrolling('#content2')">登记</nav>
-        <nav onclick= "scrolling('#content3')">查询</nav>
+        <nav onclick= "scrolling('#content1')"><h1>首页</h1></nav>
+        <nav onclick= "scrolling('#content2')"><h1>登记</h1></nav>
+        <nav onclick= "scrolling('#content3')"><h1>查询</h1></nav>
     </header>
     <container>
          <article class="content1" id="content1">
-            <h2>首页<h2>
+           <div id="gpic" style="overflow:hidden;width:600px;height:182px"> 
+           <table border="0" align="center" cellpadding="0" cellspacing="0"> 
+           <tr>
+              <td id="gpic1" valign="top" align="center"><table width="974" border="0" align='center' cellpadding="0">
+              <tr>
+               <td height="120" bgcolor="#FF00FF">img src = "BG1.jpg"</td>
+               <td  valign='top' bgcolor="#00FFFF"> <img src="BG1.jpg"></td>                
+               <td valign='top' bgcolor="#FFFF00">picture</td>                
+               <td valign='top' bgcolor="#0000FF">picture</td>                
+               <td valign='top' bgcolor="#00FF00">picture</td>                
+               <td valign='top' bgcolor="#FF0000">picture</td>                
+            </tr>
+            <tr>
+                <td height="24" align="center">word</td>
+                <td align="center">word</td>
+                <td align="center">word</td>
+                <td align="center">word</td>
+                <td align="center">word</td>
+                <td align="center">word</td>
+             </tr>
+          </table></td>
+         <td id="gpic2" valign="top"></td>
+        </tr>
+       </table>
+     </div>
+   <script>
+   var speed=30
+   gpic2.innerHTML=gpic1.innerHTML
+   function Marquee(){
+      if(gpic2.offsetWidth-gpic.scrollLeft<=0)
+         gpic.scrollLeft-=gpic.offsetWidth
+      else{
+         gpic.scrollLeft++
+      }
+   }
+    var MyMar=setInterval(Marquee,speed)
+    gpic.onmouseover=function() {clearInterval(MyMar)}
+    gpic.onmouseout=function() 
+       {MyMar=setInterval(Marquee,speed)}
+  </script>
          </article>
          <article class="content2" id="content2">
             <html>
             <body>
-                 <h1>Please register : </h1></head>
+                 <center> <h1>Please register : </h1></head>
                  <form action="cgi-bin/insert_cgi", method="POST">
                 	<br>	name:  <input type="text" name="name "/><br/>
                 	<br>	sex:   <input type="text" name="sex" align="center" valign="middle" bgcolor="#FFFFFF" /><br/>
@@ -53,11 +93,13 @@
                 	<br>	school: <input type="text" name="school "/><br/>
                 	<br>	<input type="submit" value="insert"/><br/>
             </form>
+            </center>
             </body>
             </html>
           </article>
           <article class="content3" id="content3">
              <html>
+             <center>
              <body>
                  <head><h1>show user</h1></head>
                  <form action="cgi-bin/select_cgi", method="POST">
@@ -68,6 +110,7 @@
                 	<br>	<input type="submit" value="query the user"/><br/>
                  </form>
              </body>
+             </center>
              </html>
          </article>
       </container>
@@ -86,3 +129,16 @@
         }
 </script>
 </html>
+
+
+<style type = "text/css">
+body{
+     
+     text-align:center;
+     width:100%;
+     height:100%;
+     font-family:'Open Sans',sans-serif;
+     margin:0;
+     background-color:#E0E0E0;  
+}
+</style>
