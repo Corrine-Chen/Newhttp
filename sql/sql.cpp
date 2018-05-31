@@ -94,7 +94,9 @@ bool SqlConnector::select_data(const std::string& name,
 			   				  const std::string& school)
 
 {
-     std::string select_data;  
+
+    cout<<"<body bgcolor='#696969'>" ;
+std::string select_data;  
     if(name.empty()&&sex.empty()&&hobby.empty()&&school.empty()){
         select_data="select * from user_info1";
      }  else if(!name.empty()&&sex.empty()&&hobby.empty()&&school.empty()){  	
@@ -113,8 +115,9 @@ bool SqlConnector::select_data(const std::string& name,
         select_data="select * from user_info1 where school='";
                 select_data+=school;
                   select_data+="'";
+     }else if(name.empty()&&sex.empty()&&hobby.empty()&&school.empty()){ 
+       cout<<"<h2>WITHOUT THIS USER</h2>"; 	
      }
-     
    if( mysql_query( connector, select_data.c_str()) == 0)
    {
     	MYSQL_RES *res = mysql_store_result(connector);
@@ -127,14 +130,14 @@ bool SqlConnector::select_data(const std::string& name,
     		int fields = mysql_num_fields(res);
     		MYSQL_FIELD *fd = NULL;
     		// get the name of the field
-                cout<<"<table  border=1 align=center>";
+                cout<<"<table style=background:#FAEBD7  border=1 align=center>";
                 cout<<"<title>Users Table</title>";
-                cout<<"<caption><H2>"<<"Users Table"<<"</H2></caption>";
+                cout<<"<caption><H1>"<<"Users Table"<<"</H1></caption>";
                 
                 cout<<"<tr>";    
 		for(; fd = mysql_fetch_field(res); )
     		{
-    			cout <<"<th>"<< fd->name <<"</th>";
+    			cout <<"<th><h2>"<< fd->name <<"</h2></th>";
  
     		}
                 cout<<"</tr>";
@@ -146,7 +149,7 @@ bool SqlConnector::select_data(const std::string& name,
     			MYSQL_ROW row = mysql_fetch_row(res);
                               int j = 0;
     			for(; j < fields; j++)
-    				cout <<"<td>"<< row[j] << "</td>";
+    				cout <<"<td><h2>"<< row[j] << "</h2></td>";
 
                 cout<<"</tr>";
     		}
@@ -154,6 +157,7 @@ bool SqlConnector::select_data(const std::string& name,
     		return true;
     	}
     }
+                cout<<"</body>";
 }
 SqlConnector::~SqlConnector()
 {

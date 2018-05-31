@@ -71,13 +71,14 @@ void math_cal(char* buf)
 	int data1 = atoi(arg[0]);
 	int data2 = atoi(arg[1]);
 	send_200();
+        cout<<"<body bgcolor='#696969'>" ;
         cout<<"<title>calculation result</title>";
         cout<<"<caption><center><H1>"<<"calculation result"<<"</H2></center></caption>";
 	cout << "<HTML><BODY><center> <H2> data1 + data2 = " << data1 + data2 <<"</H2>";
 	cout << "<H2> data1 - data2 = "<< data1 - data2 << "</H2>";
 	cout << "<H2> data1 * data2 = "<< data1 * data2 << "</H2>";
 	cout << "<H2> data1 / data2 = "<< data1 / data2 << "</H2></center>";
-	cout << "</BODY></HTML>";
+	cout << "</BODY></HTML></body>";
 }
 
 int main()
