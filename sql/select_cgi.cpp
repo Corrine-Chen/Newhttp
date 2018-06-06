@@ -114,9 +114,10 @@ void select_some_data(char* buf)
 	SqlConnector sql;
      if(sql.connect())
 	{
-		//cout << "<HTML>  select something is OK  </HTML>";
-		//cout << "<br>";
-                sql.select_data(arg[0],arg[1], arg[2], arg[3]);
+                if(arg[0]==NULL&&arg[1]==NULL&&arg[2]==NULL&&arg[3]==NULL)
+                 {   sql.select();}
+                else 
+                 {     sql.select_data(arg[0],arg[1], arg[2], arg[3]);  }
 		return ;
 	}
 	send_404();

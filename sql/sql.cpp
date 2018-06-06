@@ -96,7 +96,7 @@ bool SqlConnector::select_data(const std::string& name,
 {
 
     cout<<"<body bgcolor='#696969'>" ;
-std::string select_data;  
+    std::string select_data;  
     if(name.empty()&&sex.empty()&&hobby.empty()&&school.empty()){
         select_data="select * from user_info1";
      }  else if(!name.empty()&&sex.empty()&&hobby.empty()&&school.empty()){  	
@@ -115,9 +115,114 @@ std::string select_data;
         select_data="select * from user_info1 where school='";
                 select_data+=school;
                   select_data+="'";
-     }else if(name.empty()&&sex.empty()&&hobby.empty()&&school.empty()){ 
-       cout<<"<h2>WITHOUT THIS USER</h2>"; 	
-     }
+     }else if(!name.empty()&&!sex.empty()&&hobby.empty()&&school.empty()){
+          	
+        select_data="select * from user_info1 where name='";
+                select_data+=name;
+                select_data+="'";
+                select_data+="and sex ='";
+                select_data+=sex;
+                select_data+="'";
+
+     }else if(!name.empty()&&sex.empty()&&!hobby.empty()&&school.empty()){  	
+          	
+        select_data="select * from user_info1 where name='";
+                select_data+=name;
+                select_data+="'";
+                select_data+="and hobby ='";
+                select_data+=hobby;
+                select_data+="'";
+     }else if(!name.empty()&&sex.empty()&&hobby.empty()&&!school.empty()){  	
+          	
+        select_data="select * from user_info1 where name='";
+                select_data+=name;
+                select_data+="'";
+                select_data+="and school ='";
+                select_data+=school;
+                select_data+="'";
+     }else if(name.empty()&&!sex.empty()&&!hobby.empty()&&school.empty()){  	
+          	
+        select_data="select * from user_info1 where hobby='";
+                select_data+=hobby;
+                select_data+="'";
+                select_data+="and sex ='";
+                select_data+=sex;
+                select_data+="'";
+     }else if(name.empty()&&!sex.empty()&&hobby.empty()&&!school.empty()){  	
+          	
+        select_data="select * from user_info1 where school='";
+                select_data+=school;
+                select_data+="'";
+                select_data+="and sex ='";
+                select_data+=sex;
+                select_data+="'";
+     }else if(name.empty()&&sex.empty()&&!hobby.empty()&&!school.empty()){  	
+          	
+        select_data="select * from user_info1 where hobby='";
+                select_data+=hobby;
+                select_data+="'";
+                select_data+="and school ='";
+                select_data+=school;
+                select_data+="'";
+     }else if(!name.empty()&&!sex.empty()&&!hobby.empty()&&school.empty()){  	
+          	
+        select_data="select * from user_info1 where name='";
+                select_data+=name;
+                select_data+="'";
+                select_data+="and sex ='";
+                select_data+=sex;
+                select_data+="'";
+                select_data+="and hobby ='";
+                select_data+=hobby;
+                select_data+="'";
+     }else if(!name.empty()&&!sex.empty()&&hobby.empty()&&!school.empty()){  	
+          	
+        select_data="select * from user_info1 where name='";
+                select_data+=name;
+                select_data+="'";
+                select_data+="and sex ='";
+                select_data+=sex;
+                select_data+="'";
+                select_data+="and school ='";
+                select_data+=school;
+                select_data+="'";
+     }else if(!name.empty()&&sex.empty()&&!hobby.empty()&&!school.empty()){  	
+          	
+        select_data="select * from user_info1 where name='";
+                select_data+=name;
+                select_data+="'";
+                select_data+="and school ='";
+                select_data+=sex;
+                select_data+="'";
+                select_data+="and hobby ='";
+                select_data+=hobby;
+                select_data+="'";
+     }else if(name.empty()&&!sex.empty()&&!hobby.empty()&&!school.empty()){
+          	
+        select_data="select * from user_info1 where school='";
+                select_data+=school;
+                select_data+="'";
+                select_data+="and sex ='";
+                select_data+=sex;
+                select_data+="'";
+                select_data+="and hobby ='";
+                select_data+=hobby;
+                select_data+="'";
+      }else {	
+        select_data="select * from user_info1 where school='";
+                select_data+=school;
+                select_data+="'";
+                select_data+="and sex ='";
+                select_data+=sex;
+                select_data+="'";
+                select_data+="and hobby ='";
+                select_data+=hobby;
+                select_data+="'";
+                select_data+="and name ='";
+                select_data+=name;
+                select_data+="'";
+      }
+     	
    if( mysql_query( connector, select_data.c_str()) == 0)
    {
     	MYSQL_RES *res = mysql_store_result(connector);
@@ -126,6 +231,16 @@ std::string select_data;
     	{
     		// get the row of the query result
     		int rows = mysql_num_rows(res);
+                if(rows==0)
+                {
+                     cout<<"<title>NO SUCH DATA</title>"<<endl;
+                     cout<<"<br>";                    
+                     cout<<"<br>";                    
+                     cout<<"<br>";                    
+                     cout<<"<br>";                    
+                     cout<<"<center><H1>"<<"NO SUCH DATA!"<<"</H1></center>";
+                     return true;
+                }
     		//get the field of the query result 
     		int fields = mysql_num_fields(res);
     		MYSQL_FIELD *fd = NULL;
@@ -156,8 +271,7 @@ std::string select_data;
                 cout<<"</table>";
     		return true;
     	}
-    }
-                cout<<"</body>";
+   }
 }
 SqlConnector::~SqlConnector()
 {
