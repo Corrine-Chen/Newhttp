@@ -13,7 +13,7 @@
        }
        header{
           top:0;
-          height:75px;
+          height:100px;
           position:fixed;
           text-align:center;
           background:grey;
@@ -23,10 +23,10 @@
        }
        nav{
            display:inline-block;
-           margin:0 50px;
+           margin:0 100px;
        }
        article{
-           height:500px;
+           height:1000px;
            width:100%;
            border:1px solid black;
        }
@@ -35,13 +35,16 @@
 </head>
 <body>
     <header id="top">
+        <img src="1.png">
+       <h1>电子信息学院登记与查询系统</h1>
         <nav onclick= "scrolling('#content1')"><h2>首页</h2></nav>
         <nav onclick= "scrolling('#content2')"><h2>登记</h2></nav>
         <nav onclick= "scrolling('#content3')"><h2>查询</h2></nav>
     </header>
     <container>
          <article class="content1" id="content1">
-           <div id="gpic" style="overflow:hidden;width:1840px;height:1500px"> 
+               <br><br><br> <br><br> <br><br><br><br><br><br><br><br><br>
+            <div id="gpic" style="overflow:hidden;width:1840px;height:1500px"> 
            <table border="0" align="center" cellpadding="0" cellspacing="0"> 
            <tr>
               <td id="gpic1" valign="top" align="center"><table width="974" border="0" align='center' cellpadding="0">
@@ -85,6 +88,7 @@
          <article class="content2" id="content2">
             <html>
             <body>
+               <br><br><br> <br><br> <br><br><br><br><br><br><br><br><br>
                  <center> <h1>Please register : </h1></head>
                  <form action="cgi-bin/insert_cgi", method="POST">
                 	<br>	name:  <input type="text" name="name "/><br/>
@@ -101,6 +105,7 @@
              <html>
              <center>
              <body>
+               <br><br><br> <br><br> <br><br><br><br><br><br><br><br><br>
                  <head><h1>show user</h1></head>
                  <form action="cgi-bin/select_cgi", method="POST">
                 	<br>	name:  <input type="text" name="name "/><br/>
